@@ -1,9 +1,13 @@
 package entidades;
 
-public class Rgb {
+public class Rgb extends Pigmento {
 	private int red;
 	private int green;
 	private int blue;
+	
+	public Rgb() {
+		super();
+	}
 	
 	public Rgb (int r, int g, int b) {
 		this.red = r;

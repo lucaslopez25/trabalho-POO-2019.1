@@ -1,10 +1,14 @@
 package entidades;
 
-public class Cmyk {
+public class Cmyk extends Pigmento {
 	private int cyan;
 	private int magenta;
 	private int yellow;
 	private int keyBlack;
+	
+	public Cmyk() {
+		super();
+	}
 	
 	public Cmyk (int c, int m, int y, int k) {
 		this.cyan = c;
