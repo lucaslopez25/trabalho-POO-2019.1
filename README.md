@@ -31,4 +31,4 @@ as cores.
 
 ## Agradecimentos
 
-À Kelvin e Bruno, da equipe do trabalho.
+A Kelvin e Bruno, da equipe do trabalho.
