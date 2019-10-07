@@ -15,6 +15,13 @@ public class Rgb extends Pigmento {
 		this.blue = b;
 	}
 	
+	public Rgb(String id, String nome, double litros, double preco,int r, int g, int b) {
+		super(id, nome, litros, preco);
+		this.red = r;
+		this.green = g;
+		this.blue = b;
+	}
+
 	public int getRed() {
 		return red;
 	}

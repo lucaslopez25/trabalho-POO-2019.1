@@ -54,9 +54,9 @@ public class ConversorCoresApp implements ServicoConversorCores {
 
 	@Override
 	public Rgb cmykToRgb(Cmyk novo) {
-		int red = 255 * (1 - novo.getCyan()) * (1 - novo.getKeyBlack());
-		int green = 255 * (1 - novo.getMagenta()) * (1- novo.getKeyBlack());
-		int blue = 255 * (1 - novo.getYellow()) * (1 - novo.getKeyBlack());
+		int red = 255 * (1 - novo.getCyan()/100) * (1 - novo.getKeyBlack()/100);
+		int green = 255 * (1 - novo.getMagenta()/100) * (1- novo.getKeyBlack()/100);
+		int blue = 255 * (1 - novo.getYellow()/100) * (1 - novo.getKeyBlack()/100);
 		
 		Rgb resultado = new Rgb(red, green, blue);
 		return resultado;

@@ -42,6 +42,8 @@ public abstract class Pigmento {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	
+	public void atualizarLitros(double litros) {
+		this.litros = this.litros-litros;
+	}
 	
 }
