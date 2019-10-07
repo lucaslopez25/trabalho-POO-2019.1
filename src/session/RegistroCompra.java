@@ -10,7 +10,7 @@ import entidades.Rgb;
 import exceptions.PigmentoException;
 import medidor.distancia.Distancia;
 import medidor.distancia.ServicoDistancia;
-import persistence.PigmentoDAO;
+import sql.PigmentoDAO;
 import sql.PigmentoSQLDAO;
 
 public class RegistroCompra implements RegistroCompraApp{

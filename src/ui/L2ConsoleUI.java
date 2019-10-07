@@ -26,7 +26,7 @@ public class L2ConsoleUI {
 		
 		//------------------
 		
-		System.out.println("Menu");
+		System.out.println("Ver Pigmentos");
 		this.printLinha();
 		
 	}

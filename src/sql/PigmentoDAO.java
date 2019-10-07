@@ -1,4 +1,4 @@
-package persistence;
+package sql;
 
 import java.util.Collection;
 

@@ -10,7 +10,6 @@ import entidades.Cmyk;
 import entidades.Pigmento;
 import entidades.Rgb;
 import exceptions.PigmentoException;
-import persistence.PigmentoDAO;
 
 public class PigmentoSQLDAO extends AbstractSQLDAO implements PigmentoDAO{
 
