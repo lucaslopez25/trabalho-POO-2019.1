@@ -16,7 +16,7 @@ public class ConversorCoresApp implements ServicoConversorCores {
 		int green = 0;
 		int blue = 0;
 		
-		for (iCont = 0; novo.getTodos().charAt(iCont)!='\0' ; iCont++ ) {
+		for (iCont = 0; iCont<6 ; iCont++ ) {
 			if (iCont < 2) { //conta Red
 				char este = novo.getTodos().charAt(iCont);
 				if (( iCont % 2 )== 0)
@@ -54,9 +54,9 @@ public class ConversorCoresApp implements ServicoConversorCores {
 
 	@Override
 	public Rgb cmykToRgb(Cmyk novo) {
-		int red = 255 * (1 - novo.getCyan()/100) * (1 - novo.getKeyBlack()/100);
-		int green = 255 * (1 - novo.getMagenta()/100) * (1- novo.getKeyBlack()/100);
-		int blue = 255 * (1 - novo.getYellow()/100) * (1 - novo.getKeyBlack()/100);
+		int red = (int) 255 * (1 - novo.getCyan()/100) * (1 - novo.getKeyBlack()/100);
+		int green = (int) 255 * (1 - novo.getMagenta()/100) * (1- novo.getKeyBlack()/100);
+		int blue = (int) 255 * (1 - novo.getYellow()/100) * (1 - novo.getKeyBlack()/100);
 		
 		Rgb resultado = new Rgb(red, green, blue);
 		return resultado;
@@ -65,14 +65,14 @@ public class ConversorCoresApp implements ServicoConversorCores {
 	@Override
 	public Cmyk rgbToCmyk (Rgb novo) {
 		
-		int rLinha = (novo.getRed()/255);
-		int gLinha = (novo.getGreen()/255);
-		int bLinha = (novo.getBlue()/255);
+		int rLinha = (int) (novo.getRed()/255);
+		int gLinha = (int) (novo.getGreen()/255);
+		int bLinha = (int) (novo.getBlue()/255);
 		
-		int keyBlack = 1-Math.max(Math.max(rLinha,gLinha),Math.max(gLinha,bLinha));
-		int cyan = ((1 - rLinha - keyBlack) / (1 - keyBlack));
-		int magenta = ((1 - gLinha - keyBlack ) / (1 - keyBlack));
-		int yellow = ((1 - bLinha - keyBlack ) / (1 - keyBlack));
+		int keyBlack = (int) 1-Math.max(Math.max(rLinha,gLinha),Math.max(gLinha,bLinha));
+		int cyan = (int) ((1 - rLinha - keyBlack) / (1 - keyBlack));
+		int magenta = (int) ((1 - gLinha - keyBlack ) / (1 - keyBlack));
+		int yellow = (int) ((1 - bLinha - keyBlack ) / (1 - keyBlack));
 		
 		Cmyk resultado = new Cmyk(cyan, magenta, yellow, keyBlack);
 		return resultado;

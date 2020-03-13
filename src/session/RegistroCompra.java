@@ -46,6 +46,14 @@ public class RegistroCompra implements RegistroCompraApp{
 		}
 	}
 	
+	@Override
+	public double getValor(String corUser, double litrosUser) throws PigmentoException {
+		Pigmento pigmento = this.pigmentoDAO.findPigmentoByNome(corUser);
+		double valor;
+		valor= litrosUser*pigmento.getPreco();
+		return valor;
+	}
+	
 	public void asm() throws PigmentoException{
 		//o banco já deve ir com cores cadastradas
 		//exemplo de como criar as cores para inserir no banco
