@@ -18,20 +18,20 @@ public class PigmentoSQLDAO extends AbstractSQLDAO implements PigmentoDAO{
 			"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	private static final String SELECT_PIGMENTO_NOME = 
-			"SELECT id,nome,estoque,preco,tipo FROM PIGMENTO " +
-			"WHERE nome = ?";
+			"SELECT * FROM PIGMENTO " +
+			" WHERE nome = ?";
 	
 	private static final String UPDATE_PIGMENTO = 
 			"UPDATE PIGMENTO " + 
 			"SET estoque = ? " +
-			"WHERE nome = ?";
+			" WHERE nome = ?";
 	
 	private static final String SELECT_PIGMENTO = 
-			"SELECT id, nome, estoque, preco, tipo FROM PIGMENTO";
+			"SELECT * FROM PIGMENTO";
 	
 	private static final String SELECT_PIGMENTO_CONDICAO = 
-			"SELECT id, nome, estoque, preco, tipo FROM PIGMENTO" +
-			"WHERE estoque >= ?";
+			"SELECT * FROM PIGMENTO" +
+			" WHERE estoque >= ?";
 	
 	@Override
 	public void save(Pigmento p) throws PigmentoException{
@@ -88,6 +88,9 @@ public class PigmentoSQLDAO extends AbstractSQLDAO implements PigmentoDAO{
 				p.setNome(rSet.getString("nome"));
 				p.setLitros(rSet.getDouble("estoque"));
 				p.setPreco(rSet.getDouble("preco"));
+				if(this.typeToInt(p)==1) {
+					
+				}
 			}
 		} catch (SQLException e) {
 			throw new PigmentoException(e);
@@ -175,11 +178,13 @@ public class PigmentoSQLDAO extends AbstractSQLDAO implements PigmentoDAO{
 			while(rSet.next()) {
 				Pigmento p;
 				p = this.intToType(rSet.getInt("tipo"));
-				p.setId(rSet.getString("id"));
-				p.setNome(rSet.getString("nome"));
-				p.setLitros(rSet.getDouble("estoque"));
-				p.setPreco(rSet.getDouble("preco"));
-				pigmentos.add(p);
+				if(p.getClass()==Rgb.class) {
+					Rgb novo = new Rgb(rSet.getString("id"),rSet.getString("nome"),rSet.getDouble("estoque"),rSet.getDouble("preco"),rSet.getInt("r"),rSet.getInt("g"),rSet.getInt("b"));
+					pigmentos.add(novo);
+				}else {
+					Cmyk novo = new Cmyk(rSet.getString("id"),rSet.getString("nome"),rSet.getDouble("estoque"),rSet.getDouble("preco"),rSet.getInt("c"),rSet.getInt("m"),rSet.getInt("y"),rSet.getInt("k"));
+					pigmentos.add(novo);
+				}
 			}
 		} catch (SQLException e) {
 			throw new PigmentoException(e);
